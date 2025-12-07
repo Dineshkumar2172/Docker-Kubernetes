@@ -22,61 +22,58 @@ clever_cray
 (base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro Docker-Kubernetes % 
 ```
 
-
 ### CHATGPT QUERIES AND RESPONSES
 
-    Assume I have two server running inside my container, the other server can access the application running inside the same container using port 3000 through internal network without we having to expose it though -p 3000:3000? Which means the actual port 3000 on the host machine can still be used by others applications running on that machine while the application running inside container can still make use of 3000 simultaneously without any conflict?
+> ## Q: Assume I have two server running inside my container, the other server can access the application running inside the same container using port 3000 through internal network without we having to expose it though -p 3000:3000? Which means the actual port 3000 on the host machine can still be used by others applications running on that machine while the application running inside container can still make use of 3000 simultaneously without any conflict?
 
-### response:
-
-Exactly right — you’ve understood it perfectly.
-Let me break it down clearly so it becomes 100% solid.
-
-### ✅ Inside the SAME container, all processes share the same network namespace
-
-So if you run:
-
-App A listening on port 3000
-
-App B (another server) also inside the same container
-
-Then App B can access App A at localhost:3000 internally, even if you never expose or publish the port to the host.
-
-So yes:
-👉 Internal access does NOT need EXPOSE or -p.
-
-
-### ✅ Port 3000 inside the container does NOT conflict with port 3000 on the host
-
-This is a crucial point:
-
-✔️ A container has its own isolated network stack
-
-Own ports
-
-Own localhost
-
-Own interfaces
-
-So if container uses port 3000, host can also use 3000 at the same time without issues.
-
-It’s like running two computers:
-
-Container = a virtual networked mini-computer
-
-Host = your machine
-
-They don’t clash unless you explicitly connect them.
-
-### 🔍  When does a conflict happen?
-
-Only when you use port publishing:
-
-docker run -p 3000:3000 image-id
-
-
-Now Docker tries to map:
-
-host port 3000 → container port 3000
-
-If host port 3000 is already in use, you get an error.
+> Exactly right — you’ve understood it perfectly.
+> Let me break it down clearly so it becomes 100% solid.
+>
+> ✅ Inside the SAME container, all processes share the same network namespace
+>
+> So if you run:
+>
+> App A listening on port 3000
+>
+> App B (another server) also inside the same container
+>
+> Then App B can access App A at localhost:3000 internally, even if you never expose or publish the port to the host.
+>
+> So yes:
+> 👉 Internal access does NOT need EXPOSE or -p.
+>
+>
+> ✅ Port 3000 inside the container does NOT conflict with port 3000 on the host
+>
+> This is a crucial point:
+>
+> ✔️ A container has its own isolated network stack
+>
+> Own ports
+>
+> Own localhost
+>
+> Own interfaces
+>
+> So if container uses port 3000, host can also use 3000 at the same time without issues.
+>
+> It’s like running two computers:
+>
+> Container = a virtual networked mini-computer
+>
+> Host = your machine
+>
+> They don’t clash unless you explicitly connect them.
+>
+> 🔍  When does a conflict happen?
+>
+> Only when you use port publishing:
+>
+> docker run -p 3000:3000 image-id
+>
+>
+> Now Docker tries to map:
+>
+> host port 3000 → container port 3000
+>
+> If host port 3000 is already in use, you get an error.
