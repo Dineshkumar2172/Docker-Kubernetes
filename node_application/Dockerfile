@@ -37,4 +37,4 @@ COPY . .
 
 EXPOSE 80
 
-CMD ["node", "server.json"]
+CMD ["node", "server.js"]
