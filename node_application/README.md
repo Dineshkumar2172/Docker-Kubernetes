@@ -7,6 +7,10 @@ Different between CMD and RUN in Dockerfile
 >
 > ``` CMD - It comes into picture when container is getting started ```
 
+What are Layers in the context of images?
+
+> ``` Every instruction in an image creates a cacheable layer - layers help with image re-building and sharing ```
+
 An additional note
 
 > For all docker commands where an ID can be used, we don't always have to copy / write out the full id.
