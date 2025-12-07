@@ -10,6 +10,18 @@ step 5: Once the image build succeeds, use **$ docker run -p 3000:3000 image-id*
 
         EXPOSE 3000 optional — container will run even if you remove EXPOSE.
 
+```
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro Docker-Kubernetes % docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS                    NAMES
+cdc89d06c868   84e4c4c8687e   "docker-entrypoint.s…"   7 seconds ago   Up 7 seconds   0.0.0.0:3000->3000/tcp   clever_cray
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro Docker-Kubernetes % 
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro Docker-Kubernetes % 
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro Docker-Kubernetes % 
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro Docker-Kubernetes % docker stop clever_cray
+clever_cray
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro Docker-Kubernetes % 
+```
+
 
 ### CHATGPT QUERIES AND RESPONSES
 
