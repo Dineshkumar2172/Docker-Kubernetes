@@ -25,6 +25,16 @@ e96c97ec9fe5   1e27c7928f38   "docker-entrypoint.s…"   2 seconds ago   Up 2 se
 e96c97ec9fe5
 ```
 
+Attaching to an already-running container
+
+> By default, if we run a container without -d, we run in "attached mode".
+>
+> If we started a container in detached mode (i.e. with -d), we can still attach to it afterwards without restarting the container with the following command
+>
+> ```docker attach 2e7414ff8105```
+>
+> attaches us to a container with an ID or name of container.
+
 An additional note
 
 > For all docker commands where an ID can be used, we don't always have to copy / write out the full id.
