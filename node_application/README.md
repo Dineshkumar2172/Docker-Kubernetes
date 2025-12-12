@@ -35,6 +35,12 @@ Attaching to an already-running container
 >
 > attaches us to a container with an ID or name of container.
 
+Remove Images
+
+> We cannot remove images that are currently used by containers. So containers have to be removed before removing an image. Also before removing container, we need to stop it if it's in running state using ```docker stop <container-d>``` and then ```docker rm <container-id>```. (We can use ```docker rm -f <container-d>``` to stop and remove using single command cleanly)
+>
+> After removing the container, wen can use the command ```docker rmi <image-id>``` to remove a specific image. In order to remove all the unused images - we can use the command ```docker image prune``` - it'll remove all the dangling images that are not used by any containers.
+
 An additional note
 
 > For all docker commands where an ID can be used, we don't always have to copy / write out the full id.
