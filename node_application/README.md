@@ -43,9 +43,30 @@ Remove Images
 
 Remove Stopped Containers Automatically
 
-> We can use the run command with -rm flag when running a container from an image for automatic removal of the container once it stops.
+> We can use the run command with --rm flag when running a container from an image for automatic removal of the container once it stops.
 >
-> ```docker run -p 3000:3000 -d -rm <image-id>```
+> ```docker run -p 3000:3000 -d --rm <image-id>```
+
+Naming & Tagging Images and Containers
+
+> Can use --name flag to set name while running a container to easily identify container instead of using container-id. Also you can see the container get auto removed after stopping it, with the help of --rm flag which we used while running a container.
+
+```
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro node_application % docker run -p 80:80 -d --rm --name node_application 7285b8400baf
+af7ae0371fc677fe88af82bf93718b2f05a80a1f6e2f54dfbd487593a745e501
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro node_application % 
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro node_application % 
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro node_application % docker ps 
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS                NAMES
+af7ae0371fc6   7285b8400baf   "docker-entrypoint.s…"   5 seconds ago   Up 4 seconds   0.0.0.0:80->80/tcp   node_application
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro node_application % 
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro node_application % 
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro node_application % docker stop af7ae0371fc6
+af7ae0371fc6
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro node_application % docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro node_application %
+```
 
 An additional note
 
