@@ -47,7 +47,7 @@ Remove Stopped Containers Automatically
 >
 > ```docker run -p 3000:3000 -d --rm <image-id>```
 
-Naming & Tagging Images and Containers
+Naming & Tagging Containers and Images
 
 > Can use --name flag to set name while running a container to easily identify container instead of using container-id. Also you can see the container get auto removed after stopping it, with the help of --rm flag which we used while running a container.
 
@@ -67,6 +67,8 @@ af7ae0371fc6
 CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 (base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro node_application %
 ```
+
+> Similarly we can also assign a name for images, but here it is called a tag. Image tag consist of two parts ```<name/repository-of-image>:<tag>```. With the name we can set up a general name of image - define a group of, possible more specialized, images - example: node in node:14. With the tag we can define a specialized image within a group of images - example: 14 in node:14.
 
 An additional note
 
