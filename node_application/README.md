@@ -41,6 +41,12 @@ Remove Images
 >
 > After removing the container, wen can use the command ```docker rmi <image-id>``` to remove a specific image. In order to remove all the unused images - we can use the command ```docker image prune``` - it'll remove all the dangling images that are not used by any containers.
 
+Remove Stopped Containers Automatically
+
+> We can use the run command with -rm flag when running a container from an image for automatic removal of the container once it stops.
+>
+> ```docker run -p 3000:3000 -d -rm <image-id>```
+
 An additional note
 
 > For all docker commands where an ID can be used, we don't always have to copy / write out the full id.
