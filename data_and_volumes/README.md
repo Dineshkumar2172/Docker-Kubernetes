@@ -1,6 +1,6 @@
 # Notes
 
-## Module Content
+## Module Content - Managing Data & Working With Volumes
 
 >
 > Understanding different kinds of data
