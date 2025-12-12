@@ -39,7 +39,7 @@ Remove Images
 
 > We cannot remove images that are currently used by containers. So containers have to be removed before removing an image. Also before removing container, we need to stop it if it's in running state using ```docker stop <container-d>``` and then ```docker rm <container-id>```. (We can use ```docker rm -f <container-d>``` to stop and remove using single command cleanly)
 >
-> After removing the container, wen can use the command ```docker rmi <image-id>``` to remove a specific image. In order to remove all the unused images - we can use the command ```docker image prune``` - it'll remove all the dangling images that are not used by any containers.
+> After removing the container, wen can use the command ```docker rmi <image-id>``` to remove a specific image. In order to remove all the unused images - we can use the command ```docker image prune``` - it'll remove all the dangling (images with no tags and not used by any containers) images that are not used by any containers.
 
 Remove Stopped Containers Automatically
 
@@ -69,6 +69,31 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 ```
 
 > Similarly we can also assign a name for images, but here it is called a tag. Image tag consist of two parts ```<name/repository-of-image>:<tag>```. With the name we can set up a general name of image - define a group of, possible more specialized, images - example: node in node:14. With the tag we can define a specialized image within a group of images - example: 14 in node:14.
+>
+> Using this, we can name our image, and with the help of tag we can maintain different versions of our image. With combined, we can always have a unique identifier with a very specialized versions of our image. If the image has no tag, name alone can be a unique identifier depends on how you use it.
+>
+> ```docker build -t node_app:latest .```
+>
+> If we want to remove all image including tagged images, we need to run ```docker image prune -a```
+
+```
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro node_application % docker build -t node_app:latest .
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro node_application % docker images
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+node_app     latest    3d58c13a73ec   2 minutes ago   1.3GB
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro node_application % docker run -p 80:80 -d --rm --name node_application node_app 
+45b1d249e3f5c5a44b19644b1d9902f2e0a007162bed1504571266b409c97ec8
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro node_application % docker run -p 8000:80 -d --rm --name node_application2 node_app:latest
+8820a1e3721f9e4af58155b47a5d934fd8e3d3816b02d1b37a1876ffea82c407
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro node_application % 
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro node_application % 
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro node_application % 
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro node_application % docker ps
+CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS          PORTS                  NAMES
+8820a1e3721f   node_app:latest   "docker-entrypoint.s…"   3 seconds ago    Up 2 seconds    0.0.0.0:8000->80/tcp   node_application2
+45b1d249e3f5   node_app          "docker-entrypoint.s…"   56 seconds ago   Up 55 seconds   0.0.0.0:80->80/tcp     node_application
+(base) dineshkumaranbalagan@Dineshkumars-MacBook-Pro node_application % 
+```
 
 An additional note
 
