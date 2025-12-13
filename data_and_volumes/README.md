@@ -82,7 +82,9 @@
 a quick note on anonymous volumes
 ```
 Anonymous volumes live as long as the container exists.
+
 Stop/restart → volume stays.
+
 Remove container → volume is removed.
 ```
 
@@ -91,7 +93,7 @@ Remove container → volume is removed.
 >
 > 1. Created in general - not tied to any specific container.
 >
-> 2. Survives container shutdown / restart - removal via Docker CLI.
+> 2. Survives container shutdown / restart - removal via Docker CLI. ```docker volume prune```
 >
 > 3. Can be shared across containers.
 >
