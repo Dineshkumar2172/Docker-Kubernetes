@@ -115,3 +115,6 @@ Remove container → volume is removed.
 >
 
 
+## Additional Note
+
+We can use ```.dockerignore``` file to ignore files to be copied from host machine to inside image during image build. (```COPY . .``` instruction)
