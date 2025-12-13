@@ -1,6 +1,6 @@
 # NOTES
 
-## CASE 1: Container to WWW Communication
+## CASE 1: Container to WWW Communicati
 
 Container support this by design. Nothing to do explicitly to communicate to web services.
 
