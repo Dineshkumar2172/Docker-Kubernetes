@@ -50,11 +50,17 @@
 ## Volumes and Bind Mounts
 
 >
-> anonymous volumes (we don't know where its mounted and don't know which volume belongs to use as it's named automatically) - ```docker run -v /app/data```
+> anonymous volumes (we don't know where its mounted and don't know which volume belongs to use as it's named automatically)
 >
-> named volumes (we don't know where its mounted but we can identify which volume belongs to us as it's custom named) - ```docker run -v data:/app/data```
+>```docker run -v /app/data```
 >
-> Bind Mounts (we know where it's mounted and takes given path as a name) - takes absolute path - ```docker run -v /absolute/path/to/code:/app/code```
+> named volumes (we don't know where its mounted but we can identify which volume belongs to us as it's custom named)
+>
+>```docker run -v data:/app/data```
+>
+> Bind Mounts (we know where it's mounted and takes given path as a name) - takes absolute path
+>
+>```docker run -v /absolute/path/to/code:/app/code```
 >
 
 ### Anonymous Volumes
