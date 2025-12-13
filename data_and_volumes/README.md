@@ -135,8 +135,9 @@ Docker supports build time arguments and runtime environment variables.
 >
 >   Set via ENV in Dockerfile or via --env on docker run.
 >
-> ```
+>   NOTE: env variable set via docker run overrides the same env variable set on Dockerfile.
 >
+> ```
 >
 
 
