@@ -23,11 +23,11 @@ app.post('/favorites', async (req, res) => {
 
     try {
         if (favType !== 'movie' && favType !== 'character') {
-        throw new Error('"type" should be "movie" or "character"!');
+            throw new Error('"type" should be "movie" or "character"!');
         }
         const existingFav = await Favorite.findOne({ name: favName });
         if (existingFav) {
-        throw new Error('Favorite exists already!');
+            throw new Error('Favorite exists already!');
         }
     } catch (error) {
         return res.status(500).json({ message: error.message });
@@ -42,8 +42,8 @@ app.post('/favorites', async (req, res) => {
     try {
         await favorite.save();
         res
-        .status(201)
-        .json({ message: 'Favorite saved!', favorite: favorite.toObject() });
+            .status(201)
+            .json({ message: 'Favorite saved!', favorite: favorite.toObject() });
     } catch (error) {
         res.status(500).json({ message: 'Something went wrong.' });
     }
@@ -73,9 +73,9 @@ mongoose.connect(
     { useNewUrlParser: true },
     (err) => {
         if (err) {
-        console.log(err);
+            console.log(err);
         } else {
-        app.listen(3000);
+            app.listen(3000);
         }
     }
 );
