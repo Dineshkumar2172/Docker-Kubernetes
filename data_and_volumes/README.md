@@ -114,6 +114,31 @@ Remove container → volume is removed.
 > 4. Can be re-used for same containers (across restarts)
 >
 
+## Arguments & Environment Variables
+
+Docker supports build time arguments and runtime environment variables.
+
+>
+> 1. ARG: 
+> ```
+>
+>   Available inside of Dockerfile, NOT accessible in CMD or any application code.
+>   
+>   Set on image build (docker build) via --build-arg
+>
+> ```    
+> 
+> 2. ENV:
+> ```
+>   
+>   Available inside of Dockerfile & in application code.
+>
+>   Set via ENV in Dockerfile or via --env on docker run.
+>
+> ```
+>
+>
+
 
 ## Additional Note
 
