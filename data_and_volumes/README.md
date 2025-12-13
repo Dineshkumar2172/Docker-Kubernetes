@@ -73,3 +73,37 @@
 > 6. Can be useful for locking in certain data which already exists in a container.
 >
 
+a quick note on anonymous volumes
+```
+Anonymous volumes live as long as the container exists.
+Stop/restart → volume stays.
+Remove container → volume is removed.
+```
+
+### Named Volumes
+
+>
+> 1. Created in general - not tied to any specific container.
+>
+> 2. Survives container shutdown / restart - removal via Docker CLI.
+>
+> 3. Can be shared across containers.
+>
+> 4. Can be re-used for same containers (across restarts).
+>
+> 5. Cannot be created through dockerfile, can only be created through -v instruction when running a container.
+>
+
+### Bind Mounts
+
+>
+> 1. Location on host file system, not tied to any specific container.
+>
+> 2. Survives container shutdown / restart - in order to remove bind mount we have to remove it on host fs. There is no separate docker cli command as docker doesn't own it.
+>
+> 3. Can be shared across containers.
+> 
+> 4. Can be re-used for same containers (across restarts)
+>
+
+
