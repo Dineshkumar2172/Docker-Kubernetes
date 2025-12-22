@@ -12,7 +12,6 @@ services:
     build:
       context: ./dockerfiles
       dockerfile: php.dockerfile
-
     volumes:
       # NOTE: delegated imrpoves performance by batching and writing data to host instead of writing in real time
       - ./src:/var/www/html:delegated
@@ -23,6 +22,13 @@ services:
       - ./env/mysql.env
 
   # # utility containers
-  # composer:
+  composer:
+    build:
+      context: ./dockerfiles
+      dockerfile: composer.dockerfile
+    volumes:
+      - ./src:/var/www/html
+
+    
   # npm:
   # artisan:
