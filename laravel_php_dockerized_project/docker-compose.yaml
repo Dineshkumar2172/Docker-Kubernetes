@@ -7,9 +7,16 @@ services:
       - '8000:80' # host 300 bind to internal 80
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      
 
-  # php:
+  php:
+    build:
+      context: ./dockerfiles
+      dockerfile: php.dockerfile
+
+    volumes:
+      # NOTE: delegated imrpoves performance by batching and writing data to host instead of writing in real time
+      - ./src:/var/www/html:delegated
+
   # mysql:
 
   # # utility containers
