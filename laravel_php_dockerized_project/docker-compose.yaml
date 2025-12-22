@@ -17,7 +17,10 @@ services:
       # NOTE: delegated imrpoves performance by batching and writing data to host instead of writing in real time
       - ./src:/var/www/html:delegated
 
-  # mysql:
+  mysql:
+    image: mysql:5.7
+    env_file:
+      - ./env/mysql.env
 
   # # utility containers
   # composer:
