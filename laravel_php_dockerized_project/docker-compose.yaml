@@ -20,7 +20,7 @@ services:
     build:
       context: .
       dockerfile: dockerfiles/php.dockerfile
-    volumes:
+    # volumes:
       # NOTE: delegated improves performance by batching and writing data to host instead of writing in real time
       # - ./src:/var/www/html:delegated
     stdin_open: true   # -i
