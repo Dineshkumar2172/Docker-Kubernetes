@@ -2,7 +2,10 @@ version: "3.8"
 
 services:
   server:
-    image: 'nginx:stable-alpine'
+    # image: 'nginx:stable-alpine'
+    build:
+      context: ./dockerfiles
+      dockerfile: nginx.dockerfile
     ports:
       - '8000:80' # host 300 bind to internal 80
     volumes:
@@ -13,8 +16,10 @@ services:
 
   php:
     build:
-      context: ./dockerfiles
-      dockerfile: php.dockerfile
+      context: . # it sets the relative path from where docker file will exist
+      # if we set dockerfiles dir in context, the dockerfile will not get access to src and nginx
+      # directories while building the new image
+      dockerfile: dockerfiles/php.dockerfile
     volumes:
       # NOTE: delegated imrpoves performance by batching and writing data to host instead of writing in real time
       - ./src:/var/www/html:delegated
