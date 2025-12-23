@@ -18,6 +18,8 @@ services:
     volumes:
       # NOTE: delegated imrpoves performance by batching and writing data to host instead of writing in real time
       - ./src:/var/www/html:delegated
+    stdin_open: true   # -i
+    tty: true          # -t
     depends_on:
       - mysql
 
