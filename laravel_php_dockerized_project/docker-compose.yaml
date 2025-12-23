@@ -10,9 +10,9 @@ services:
       dockerfile: dockerfiles/php.dockerfile
     ports:
       - '8000:80' # host 8000 bind to internal 80
-    # volumes:
-    #   - ./src:/var/www/html
-    #   - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    volumes:
+      - ./src:/var/www/html
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     depends_on:
       - php
 
@@ -20,9 +20,9 @@ services:
     build:
       context: .
       dockerfile: dockerfiles/php.dockerfile
-    # volumes:
+    volumes:
       # NOTE: delegated improves performance by batching and writing data to host instead of writing in real time
-      # - ./src:/var/www/html:delegated
+      - ./src:/var/www/html:delegated
     stdin_open: true   # -i
     tty: true          # -t
     depends_on:
@@ -43,8 +43,8 @@ services:
 
   artisan:
     build:
-      context: ./dockerfiles
-      dockerfile: php.dockerfile
+      context: .
+      dockerfile: dockerfiles/php.dockerfile
     volumes:
       - ./src:/var/www/html
     entrypoint: ["php", "/var/www/html/artisan"]
