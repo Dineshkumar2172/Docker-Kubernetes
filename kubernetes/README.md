@@ -26,9 +26,19 @@ We can even make use of any of the services offered by cloud service provides li
 
     Kubernetes is like Docker-Compose for multiple machines.
 
-## Core kubernetes concepts & architecture
+### Closer look at worker node
 
-1. 
+![alt text](1000094053.jpg)
+
+### Closer look at master node
+
+![alt text](1000094054.jpg)
+
+### Kubernetes does not manage our infrastructure
+
+![alt text](1000094052.jpg)
+
+    Cloud service provides like AWS and Azure offers managed services that helps us with handling right section of the above slide. AWS offers EKS and Azure offers AKS which helps us getting rid of the right side of the slide.
 
 ## Core components
 
