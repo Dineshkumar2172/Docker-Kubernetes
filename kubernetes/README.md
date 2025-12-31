@@ -55,3 +55,8 @@ We can even make use of any of the services offered by cloud service provides li
 > Containers - Normal (Docker) containers
 >
 > Services - A logical set (group) of pods with a unique, pod- and container- independent IP address.
+
+## Understanding kubernetes Objects
+
+> 1. Kubernetes works with objects. (Pods, Deployments, Services, Volumes etc)
+> 2. Objects can be created in two ways: Imperatively or Declaratively
