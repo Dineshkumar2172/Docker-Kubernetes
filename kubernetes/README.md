@@ -60,3 +60,62 @@ We can even make use of any of the services offered by cloud service provides li
 
 > 1. Kubernetes works with objects. (Pods, Deployments, Services, Volumes etc)
 > 2. Objects can be created in two ways: Imperatively or Declaratively
+
+## Managing Data & Volumes with Kubernetes
+
+1. Volumes - Pod level storage - data survives during container restart but not on pod restarts - depending on volume type as well.
+2. Persistent Volume - Cluster level storage like a storage detached from any pods.
+3. Persistent Volume Claim - Pods use this pvc to claim the required storage space from persistent volume.
+
+**GPT response**
+
+```
+1️⃣ emptyDir
+
+Created when pod starts
+
+Deleted when pod is deleted
+
+Pod restart = new pod → data gone ❌
+
+Use case:
+
+Temp files
+
+Caches
+
+2️⃣ hostPath
+
+Data lives on worker node
+
+Pod restart on same node → data survives ✅
+
+Pod scheduled on different node → data lost ❌
+
+⚠️ Not portable
+⚠️ Node failure = data loss
+
+3️⃣ Persistent Volume (PVC) ✅ (MOST IMPORTANT)
+
+Backed by:
+
+Cloud disk
+
+Network storage
+
+PVC exists independently of pods
+
+Pod can be deleted and recreated
+
+New pod mounts same PVC → data survives
+
+This is the correct solution for persistence.
+
+4️⃣ ConfigMap / Secret
+
+Recreated when pod starts
+
+Not for persistence
+
+Source-of-truth is etcd, not filesystem
+```
